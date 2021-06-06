@@ -27,10 +27,11 @@
             </div>
             <div class="card-body">
 
-                <div class="list-group">
-                    <a v-for="m in missoes" href="#" v-on:click="setMission(m)"
-                        class="list-group-item list-group-item-action"> {{m.id+' : '+m.nome}}</a>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-dark" type="button" v-on:click="setMission(m)" v-for="m in missoes"> {{m.id+' : '+m.nome}}</button>
+
                 </div>
+                
             </div>
         </div>
 
@@ -39,9 +40,9 @@
                 Distritos </div>
             <div class="card-body">
                 <a href="#" v-on:click="step=0" class=""> Voltar</a>
-                <div class="list-group">
-                    <a v-for="d in distritos" href="#" v-on:click="getResult(d,missao_atual)"
-                        class="list-group-item list-group-item-action"> {{d.nome}}</a>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-dark" type="button" v-for="d in distritos" v-on:click="getResult(d,missao_atual)"
+                        > {{d.nome}}</button>
                 </div>
             </div>
         </div>
@@ -138,7 +139,7 @@
                     { distrito: 9, missao: 'D', requisito: 'Elimine todos os strigoi do local', recompensa: '', pista: '' },
 
                     { distrito: 10, missao: 'A', requisito: 'descarte 1 carta de item, +2h de todos os caçadores', recompensa: 'avanço de nível', pista: ' Retire os outros marcadores, coloque marcadores no Esconderijo [1], cemitério [9]' },
-                    { distrito: 10, missao: 'B', requisito: 'descarte 1 carta de reforços, +1h', recompensa: 'avanço de nível', pista: 'coloque 1 strigoi e 1 marcador nos distritos, Docas[1], Metro [3], Aeroporto [11], Centro empresarial [5]' },
+                    { distrito: 10, missao: 'B', requisito: 'descarte 1 carta de reforços, +1h', recompensa: 'avanço de nível', pista: 'coloque 1 strigoi e 1 marcador nos distritos, Docas[2], Metro [3], Aeroporto [11], Centro empresarial [5]' },
                     { distrito: 10, missao: 'C', requisito: 'Elimine todos os strigoi do local', recompensa: 'pegue 1 carta de arma do descarte', pista: '' },
                     { distrito: 10, missao: 'D', requisito: 'descarte 1 carta de reforços, +3h', recompensa: 'avanço de nível', pista: 'Retire os outros marcadores, coloque 1 strigoi e 1 marcador nos distritos, Centro empresarial [5], Condominios [7], Metro [3], Periferia [8]' },
 
@@ -163,11 +164,11 @@
                     this.step = 1;
                 },
                 getResult(distrito, missao) {
-                    var response = this.diariopg.filter(function (obj) {
+                    let response = this.diariopg.filter(function (obj) {
                         return (obj.distrito === distrito.id && obj.missao == missao.id);
                     });
 
-                    this.resultado = response[0];
+                    this.resultado = {...response[0]};
                     this.resultado.distrito = distrito.nome;
                     this.resultado.missao = missao.id + ' : ' + missao.nome;
                     this.step = 2;
