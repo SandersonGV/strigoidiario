@@ -8,52 +8,70 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Strigoi Diário</title>
 </head>
 
-<body>
-    <div id="app" class="container p-4">
+<body class="container text-white bg-dark">
+    <div id="app">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Strigoi Diario - Missão
-                    {{missao_atual ? missao_atual.id+' : '+missao_atual.nome:''}}</a>
-            </div>
-        </nav>
-
-        <div class="card m-4" v-show='step==0'>
-            <div class="card-header">
-                Missões
-            </div>
-            <div class="card-body">
-
-                <div class="d-grid gap-2">
-                    <button class="btn btn-outline-dark" type="button" v-on:click="setMission(m)" v-for="m in missoes"> {{m.id+' : '+m.nome}}</button>
-
-                </div>
-                
-            </div>
+        <div class="container">
+            <h1 class="m-5">
+                Strigoi Diario
+                <p> Missão {{missao_atual ? missao_atual.id+' : '+missao_atual.nome:''}}</p>
+            </h1>
         </div>
 
-        <div class="card m-4" v-show='step==1'>
-            <div class="card-header">
-                Distritos </div>
-            <div class="card-body">
-                <a href="#" v-on:click="step=0" class=""> Voltar</a>
+        <div class="border border-white p-2" v-show='step==0'>
+            <div class="">
+                <h5>Missões: escolha uma</h5>
+            </div>
+            <div class=" ">
                 <div class="d-grid gap-2">
-                    <button class="btn btn-outline-dark" type="button" v-for="d in distritos" v-on:click="getResult(d,missao_atual)"
-                        > {{d.nome}}</button>
+                    <a class="border border-white p-2 text-white" v-on:click="setMission(m)" v-for="m in missoes">
+                        {{m.id+' : '+m.nome}}</a>
                 </div>
             </div>
         </div>
 
-        <div class="card m-4" v-show='step==2'>
-            <div class="card-body">
-                <a href="#" v-on:click="step=1" class=""> Voltar</a>
-                <h5 class="card-title">Distrito: {{resultado.distrito}}</h5>
-                <p class="card-text"><strong>Requisito</strong>: {{resultado.requisito}}</p>
-                <p class="card-text"><strong>Recompensa</strong>: {{resultado.recompensa}}</p>
-                <p class="card-text"><strong>Pista</strong> : {{resultado.pista}}</p>
+        <div class="border border-white p-2" v-show='step==1'>
+            <h5>
+                <a v-on:click="step=0">
+                    <span class="fa fa-arrow-circle-left"></span>
+                </a>
+                Distritos
+            </h5>
+            <div class="">
+                <div class="d-grid gap-2">
+                    <a class="border border-white p-2 text-white" v-for="d in missao_atual.distritos"
+                        v-on:click="getResult(d,missao_atual)">
+                        <span :class="d.ok===1?'fa fa-check-circle':'fa fa-question'"></span>
+                        {{d.nome}}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="border border-white p-2" v-show='step==2'>
+            <h5>
+                <a v-on:click="step=1; isCompleted=false">
+                    <span class="fa fa-arrow-circle-left"></span>
+                </a>
+                {{resultado.distrito?.nome}}
+            </h5>
+            <div>
+                <p><span class="fa fa-crosshairs"></span> <strong> Objetivo</strong>: {{resultado.requisito}}</p>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success" type="button"
+                        v-on:click="setCompleteObjective(resultado.distrito.id,missao_atual.id);isCompleted=true;">
+                        <span class="fa fa-check"></span> Completado!</button>
+                </div>
+
+
+                <div class="border border-white p-2 mt-3" v-show="isCompleted">
+                    <p> <span class="fa fa-gift"></span><strong> Recompensa</strong>: {{resultado.recompensa}}</p>
+                    <p v-show='resultado.pista!=""'> <span class="fa fa-info-circle"></span> <strong> Pista</strong> : {{resultado.pista}}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -70,7 +88,8 @@
             data: {
                 name: 'Vue.js',
                 step: 0,
-                missao_atual: { id: '', nome: '' },
+                isCompleted: false,
+                missao_atual: { id: '', nome: '', distritos: {} },
                 resultado: {},
                 distritos: [
                     { id: 1, nome: 'Esconderijo [1]' },
@@ -99,7 +118,7 @@
                     { distrito: 1, missao: 'D', requisito: '+3h', recompensa: 'elimine 1 strigoi de um distrito a sua escolha', pista: '' },
 
                     { distrito: 2, missao: 'A', requisito: '+4h', recompensa: '2 cartas de itens', pista: '' },
-                    { distrito: 2, missao: 'B', requisito: 'elimine todos os STRIGOI do local, +6h de todos os caçadores', recompensa: 'Avanço de nível', pista: 'destrua o MESTRE, o mestre aparece (puxe uma carta de infestação para decidir onde)' },
+                    { distrito: 2, missao: 'B', requisito: 'elimine todos os STRIGOI do local, todos os caçadores recebem 1 token de cansaço', recompensa: 'Avanço de nível', pista: 'destrua o MESTRE, o mestre aparece (puxe uma carta de infestação para decidir onde)' },
                     { distrito: 2, missao: 'C', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 1 cartas de arma', pista: '' },
                     { distrito: 2, missao: 'D', requisito: 'Descarte 1 item', recompensa: 'compre 1 carta de reforço', pista: '' },
 
@@ -116,7 +135,7 @@
                     { distrito: 5, missao: 'A', requisito: 'Descarte 1 carta de arma', recompensa: 'elimine 1 STRIGOI de um distrito qualquer', pista: '' },
                     { distrito: 5, missao: 'B', requisito: 'Elimine todos os strigoi do local', recompensa: '1 carta de arma', pista: '' },
                     { distrito: 5, missao: 'C', requisito: 'descarte 1 carta de reforços, +2h de todos os caçadores', recompensa: 'avanço de nível', pista: 'coloque 1 strigoi e 1 marcador nos distritos, Periferia [8], Esconderijo [1], Condomínios [7]' },
-                    { distrito: 5, missao: 'D', requisito: '+4h', recompensa: 'avanço de nível', pista: 'Retire os outros marcadores, coloque 1 strigoi e 1 marcador nos distritos, Igreja [12], Cemitério [9]' },
+                    { distrito: 5, missao: 'D', requisito: '+4h', recompensa: 'move 2 caçadores de qualquer distrito', pista: 'Retire os outros marcadores, coloque 1 strigoi e 1 marcador nos distritos, Igreja [12], Cemitério [9]' },
 
                     { distrito: 6, missao: 'A', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 1 carta de item', pista: '' },
                     { distrito: 6, missao: 'B', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 2 itens, escolha 1 e coloque o outro no fundo do baralho', pista: '' },
@@ -128,9 +147,9 @@
                     { distrito: 7, missao: 'C', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 1 carta de reforço', pista: '' },
                     { distrito: 7, missao: 'D', requisito: 'descarte 1 carta de reforços', recompensa: 'move 2 STRIGOI de distrito qualquer', pista: '' },
 
-                    { distrito: 8, missao: 'A', requisito: 'descarte 1 carta de arma, +2h de todos os caçadores', recompensa: 'avanço de nível', pista: 'Retire os outros marcadores, coloque 1 strigoi e 1 strigoi nos distritos, Comércio [10], Condominios [7]' },
+                    { distrito: 8, missao: 'A', requisito: 'descarte 1 carta de arma, +2h de todos os caçadores', recompensa: 'compre 1 carta de reforço', pista: 'Retire os outros marcadores, coloque 1 strigoi e 1 strigoi nos distritos, Comércio [10], Condominios [7]' },
                     { distrito: 8, missao: 'B', requisito: '+2h', recompensa: 'elimine 2 STRIGOI de um distrito qualquer', pista: '' },
-                    { distrito: 8, missao: 'C', requisito: '+3h', recompensa: 'avanço de nível', pista: 'Retire os outros marcadores, coloque 1 strigoi e 1 marcador nos distritos,  Aeroporto [11], Comércio [10],  Docas [2]' },
+                    { distrito: 8, missao: 'C', requisito: '+3h', recompensa: 'recupera 2 de risco de contágio', pista: 'Retire os outros marcadores, coloque 1 strigoi e 1 marcador nos distritos,  Aeroporto [11], Comércio [10],  Docas [2]' },
                     { distrito: 8, missao: 'D', requisito: 'Elimine todos os strigoi do local', recompensa: 'elimine 2 STRIGOI de um distrito qualquer', pista: '' },
 
                     { distrito: 9, missao: 'A', requisito: '+2h', recompensa: 'compre 1 carta de arma', pista: '' },
@@ -156,11 +175,11 @@
 
             },
             created: function () {
-
             },
             methods: {
                 setMission(missao) {
                     this.missao_atual = missao;
+                    this.missao_atual.distritos =  JSON.parse(JSON.stringify(this.distritos));
                     this.step = 1;
                 },
                 getResult(distrito, missao) {
@@ -168,12 +187,16 @@
                         return (obj.distrito === distrito.id && obj.missao == missao.id);
                     });
 
-                    this.resultado = {...response[0]};
-                    this.resultado.distrito = distrito.nome;
+                    this.resultado = { ...response[0] };
+                    this.resultado.distrito = distrito;
                     this.resultado.missao = missao.id + ' : ' + missao.nome;
                     this.step = 2;
 
                 },
+                setCompleteObjective(distrito) {
+                    this.missao_atual.distritos.find(obj => obj.id === distrito).ok = 1;
+                },
+
             }
         })
     </script>
