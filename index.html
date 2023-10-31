@@ -20,8 +20,10 @@
                 Strigoi Diario
                 <p> Missão {{missao_atual ? missao_atual.id+' : '+missao_atual.nome:''}}</p>
             </h1>
+            
         </div>
-
+        <p v-show='step==1'> <span class="fa fa-info-circle"></span> <strong> Ultima pista</strong> : {{ultimaPista}}</p>
+        
         <div class="border border-white p-2" v-show='step==0'>
             <div class="">
                 <h5>Missões: escolha uma</h5>
@@ -30,12 +32,12 @@
                 <div class="d-grid gap-2">
                     <a class="border border-white p-2 text-white" v-on:click="setMission(m)" v-for="m in missoes">
                         {{m.id+' : '+m.nome}}</a>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="border border-white p-2" v-show='step==1'>
-            <h5>
+            
+            <div class="border border-white p-2" v-show='step==1'>
+                <h5>
                 <a v-on:click="step=0">
                     <span class="fa fa-arrow-circle-left"></span>
                 </a>
@@ -45,7 +47,7 @@
                 <div class="d-grid gap-2">
                     <a class="border border-white p-2 text-white" v-for="d in (missao_atual.distritos)"
                         v-on:click="getResult(d,missao_atual)">
-                        <span :class="d.ok===1?'fa fa-check-circle text-success':'fa fa-exclamation-circle text-info'"></span>
+                        <span class="fa fa-exclamation-circle text-info"></span>
                         {{d.nome}}
                     </a>
                 </div>
@@ -108,10 +110,10 @@
                     { id: 13, nome: 'Mestre em jogo' },
                 ],
                 missoes: [
-                    { id: 'A', nome: 'Ritual de purificação', inicial:[12,3] },
-                    { id: 'B', nome: 'Espelho sagrado', inicial:[7,10,8] },
-                    { id: 'C', nome: 'O livro de prata', inicial:[12,5,9] },
-                    { id: 'D', nome: 'A lamina de prata', inicial:[10,2]},
+                    { id: 'A', nome: 'Ritual de purificação', inicial:[12,3] , pista:`Estamos enfrentando uma ameaça ancestral e sem opções de como destruir o mestre, nossa pista mais relevante, pode parecer loucura, mas tudo já está um loucura.Há um livro antigo que conta sobre um ritual de purificação capaz de destruir o mal, é uma chance remota mas precisamos tentar. Todas as nossas buscas nos levam a crer que tal artefato está de posso da igreja [12] local.`},
+                    { id: 'B', nome: 'Espelho sagrado', inicial:[7,10,8], pista:`Depois de tempos de pesquisa e tentativas frustradas, descobrimos um espelho de prata que ao refletir o sol pode destruir o mestre, não temos muitas escolhas e o tempo é crucial. Nosso destino agora é uma loja de antiguidades no comercio[10].` },
+                    { id: 'C', nome: 'O livro de prata', inicial:[12,5,9], pista:`Um misterioso velho conta sobre um livro que contêm os segredos da origem e da destruição dos strigoi, é chamado Occido Lumeim, e segundo fontes seguras estará em um leilão em um prédio no centro empresarial[5]` },
+                    { id: 'D', nome: 'A lamina de prata', inicial:[10,2], pista:`Sabe-se que o mestre pode ser morto por outros mestres, então uma importante informação chega aos caçadores, uma lâmina feita da coluna de um mestre ancestral, nossas fontes de informação estão ilhadas no COMERCIO[10] então devemos ir até elas`},
                 ],
                 diariopg: [
                     { distrito: 1, missao: 'A', requisito: '+2h', recompensa: 'compre 1 carta de Arma', pista: 'Retire os outros marcadores, destrua o MESTRE, o mestre aparece (puxe uma carta de infestação para decidir onde)',proximo:[13] , limpar:true },
@@ -120,7 +122,7 @@
                     { distrito: 1, missao: 'D', requisito: '+3h', recompensa: 'elimine 1 strigoi de um distrito a sua escolha', pista: '' },
 
                     { distrito: 2, missao: 'A', requisito: '+4h', recompensa: '2 cartas de itens', pista: '' },
-                    { distrito: 2, missao: 'B', requisito: 'elimine todos os STRIGOI do local, todos os caçadores recebem 1 token de cansaço', recompensa: 'Avanço de nível', pista: 'destrua o MESTRE, o mestre aparece (puxe uma carta de infestação para decidir onde)',proximo:[13]  },
+                    { distrito: 2, missao: 'B', requisito: 'elimine todos os STRIGOI do local, todos os caçadores recebem 1 token de cansaço', recompensa: 'Avanço de nível', pista: 'destrua o MESTRE, o mestre aparece (puxe uma carta de infestação para decidir onde)',proximo:[13], limpar:true  },
                     { distrito: 2, missao: 'C', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 1 cartas de arma', pista: '' },
                     { distrito: 2, missao: 'D', requisito: 'Descarte 1 item', recompensa: 'compre 1 carta de reforço', pista: '' },
 
@@ -186,14 +188,12 @@
             },
             methods: {
                 setMission(missao) {
-                    console.log( missao)
-
                     this.missao_atual = missao;
                     this.missao_atual.distritos =  this.distritos.filter(o=> missao.inicial.includes(o.id));
+                    this.ultimaPista = missao.pista
                     this.step = 1;
                 },
                 getResult(distrito, missao) {
-                    console.log(distrito, missao)
                     let response = this.diariopg.filter(function (obj) {
                         return (obj.distrito === distrito.id && obj.missao == missao.id);
                     });
@@ -205,12 +205,15 @@
 
                 },
                 setCompleteObjective(resultado) {
-                    console.log(resultado)
-                    this.missao_atual.distritos.find(obj => obj.id === resultado.distrito.id).ok = 1;
+                    let idx = this.missao_atual.distritos.findIndex(obj => obj.id === resultado.distrito.id);
+                    this.missao_atual.distritos.splice(idx,1);
+
                     if(resultado?.proximo){
                         let proximos = this.distritos.filter(o=> resultado?.proximo.includes(o.id))
-                        if (!resultado?.limpar)
+                        this.ultimaPista = resultado?.limpar?resultado.pista:this.ultimaPista
+                        if (!resultado?.limpar){
                             proximos.push(...this.missao_atual.distritos)
+                        }
                         this.missao_atual.distritos= proximos
                     }
                     this.isCompleted=true;
