@@ -9,7 +9,7 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Strigoi Diário</title>
+    <title>Eldervale Diário</title>
 </head>
 
 <body class="container text-white bg-dark">
@@ -17,7 +17,7 @@
 
         <div class="container">
             <h1 class="mt-5">
-                Strigoi Diario
+                Eldervale Diario
                 <p> Missão {{missao_atual ? missao_atual.id+' : '+missao_atual.nome:''}}</p>
             </h1>
             
@@ -107,79 +107,79 @@
                     { id: 10, nome: 'Comercio [10]' },
                     { id: 11, nome: 'Aeroporto [11]' },
                     { id: 12, nome: 'Igreja [12]' },
-                    { id: 13, nome: 'Mestre em jogo' },
+                    { id: 13, nome: 'INOMINÁVEL em jogo' },
                 ],
                 missoes: [
-                    { id: 'A', nome: 'Ritual de purificação', inicial:[12,3] , pista:`Estamos enfrentando uma ameaça ancestral e sem opções de como destruir o mestre, nossa pista mais relevante, pode parecer loucura, mas tudo já está um loucura.Há um livro antigo que conta sobre um ritual de purificação capaz de destruir o mal, é uma chance remota mas precisamos tentar. Todas as nossas buscas nos levam a crer que tal artefato está de posso da igreja [12] local.`},
-                    { id: 'B', nome: 'Espelho sagrado', inicial:[7,10,8], pista:`Depois de tempos de pesquisa e tentativas frustradas, descobrimos um espelho de prata que ao refletir o sol pode destruir o mestre, não temos muitas escolhas e o tempo é crucial. Nosso destino agora é uma loja de antiguidades no comercio[10].` },
-                    { id: 'C', nome: 'O livro de prata', inicial:[12,5,9], pista:`Um misterioso velho conta sobre um livro que contêm os segredos da origem e da destruição dos strigoi, é chamado Occido Lumeim, e segundo fontes seguras estará em um leilão em um prédio no centro empresarial[5]` },
-                    { id: 'D', nome: 'A lamina de prata', inicial:[10,2], pista:`Sabe-se que o mestre pode ser morto por outros mestres, então uma importante informação chega aos caçadores, uma lâmina feita da coluna de um mestre ancestral, nossas fontes de informação estão ilhadas no COMERCIO[10] então devemos ir até elas`},
+                    { id: 'A', nome: 'Ritual de purificação', inicial:[12,3] , pista:`Estamos enfrentando uma ameaça ancestral e sem opções de como destruir o INOMINÁVEL, nossa pista mais relevante, pode parecer loucura, mas tudo já está um loucura.Há um livro antigo que conta sobre um ritual de purificação capaz de destruir o mal, é uma chance remota mas precisamos tentar. Todas as nossas buscas nos levam a crer que tal artefato está de posso da igreja [12] local.`},
+                    { id: 'B', nome: 'Espelho sagrado', inicial:[7,10,8], pista:`Depois de tempos de pesquisa e tentativas frustradas, descobrimos um espelho de prata que ao refletir o sol pode destruir o INOMINÁVEL, não temos muitas escolhas e o tempo é crucial. Nosso destino agora é uma loja de antiguidades no comercio[10].` },
+                    { id: 'C', nome: 'O livro de prata', inicial:[12,5,9], pista:`Um misterioso velho conta sobre um livro que contêm os segredos da origem e da destruição dos VAZIO, é chamado Occido Lumeim, e segundo fontes seguras estará em um leilão em um prédio no centro empresarial[5]` },
+                    { id: 'D', nome: 'A lamina de prata', inicial:[10,2], pista:`Sabe-se que o INOMINÁVEL pode ser morto por outro INOMINÁVEL, então uma importante informação chega aos INVESTIGADORES, uma lâmina feita da coluna de um INOMINÁVEL ancestral, nossas fontes de informação estão ilhadas no COMERCIO[10] então devemos ir até elas`},
                 ],
                 diariopg: [
-                    { distrito: 1, missao: 'A', requisito: '+2h', recompensa: 'compre 1 carta de Arma', pista: 'Retire os outros marcadores, destrua o MESTRE, o mestre aparece (puxe uma carta de infestação para decidir onde)',proximo:[13] , limpar:true },
+                    { distrito: 1, missao: 'A', requisito: '+2h', recompensa: 'compre 1 carta de Arma', pista: 'Retire os outros marcadores, destrua o INOMINÁVEL, o INOMINÁVEL aparece (puxe uma carta de infestação para decidir onde)',proximo:[13] , limpar:true },
                     { distrito: 1, missao: 'B', requisito: '+2h', recompensa: 'recebe 1 marcador de Descanso', pista: '' },
-                    { distrito: 1, missao: 'C', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 2 cartas de armas escolha 1 devolva a outra para o fundo', pista: 'coloque 1 strigoi e 1 marcador nos distritos, Metro [3], Metro [4]',proximo:[3,4] },
-                    { distrito: 1, missao: 'D', requisito: '+3h', recompensa: 'elimine 1 strigoi de um distrito a sua escolha', pista: '' },
+                    { distrito: 1, missao: 'C', requisito: 'Elimine todos os VAZIO do local', recompensa: 'compre 2 cartas de armas escolha 1 devolva a outra para o fundo', pista: 'coloque 1 VAZIO e 1 marcador nos distritos, Metro [3], Metro [4]',proximo:[3,4] },
+                    { distrito: 1, missao: 'D', requisito: '+3h', recompensa: 'elimine 1 VAZIO de um distrito a sua escolha', pista: '' },
 
                     { distrito: 2, missao: 'A', requisito: '+4h', recompensa: '2 cartas de itens', pista: '' },
-                    { distrito: 2, missao: 'B', requisito: 'elimine todos os STRIGOI do local, todos os caçadores recebem 1 token de cansaço', recompensa: 'Avanço de nível', pista: 'destrua o MESTRE, o mestre aparece (puxe uma carta de infestação para decidir onde)',proximo:[13], limpar:true  },
-                    { distrito: 2, missao: 'C', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 1 cartas de arma', pista: '' },
+                    { distrito: 2, missao: 'B', requisito: 'elimine todos os VAZIO do local, todos os INVESTIGADORES recebem 1 token de cansaço', recompensa: 'Avanço de nível', pista: 'destrua o INOMINÁVEL, o INOMINÁVEL aparece (puxe uma carta de infestação para decidir onde)',proximo:[13], limpar:true  },
+                    { distrito: 2, missao: 'C', requisito: 'Elimine todos os VAZIO do local', recompensa: 'compre 1 cartas de arma', pista: '' },
                     { distrito: 2, missao: 'D', requisito: 'Descarte 1 item', recompensa: 'compre 1 carta de reforço', pista: '' },
 
-                    { distrito: 3, missao: 'A', requisito: 'Elimine todos os strigoi do local', recompensa: 'elimine 2 STRIGOI de um distrito qualquer', pista: '' },
+                    { distrito: 3, missao: 'A', requisito: 'Elimine todos os VAZIO do local', recompensa: 'elimine 2 VAZIO de um distrito qualquer', pista: '' },
                     { distrito: 3, missao: 'B', requisito: '+2h', recompensa: '1 carta de arma', pista: '' },
-                    { distrito: 3, missao: 'C', requisito: 'Elimine todos os strigoi do local', recompensa: 'elimine 1 strigoi de um distrito a sua escolha', pista: '' },
+                    { distrito: 3, missao: 'C', requisito: 'Elimine todos os VAZIO do local', recompensa: 'elimine 1 VAZIO de um distrito a sua escolha', pista: '' },
                     { distrito: 3, missao: 'D', requisito: 'Descarte 1 reforço ', recompensa: 'recupera toda a RISCO DE CONTÁGIO', pista: '' },
 
                     { distrito: 4, missao: 'A', requisito: '+1h', recompensa: 'compre 1 carta de item', pista: '' },
-                    { distrito: 4, missao: 'B', requisito: 'Descarte 1 carta de arma', recompensa: 'elimine 1 STRIGOI de um distrito qualquer', pista: '' },
+                    { distrito: 4, missao: 'B', requisito: 'Descarte 1 carta de arma', recompensa: 'elimine 1 VAZIO de um distrito qualquer', pista: '' },
                     { distrito: 4, missao: 'C', requisito: '+2h', recompensa: 'vá pra qualquer distrito a sua escolha', pista: '' },
-                    { distrito: 4, missao: 'D', requisito: 'Elimine todos os strigoi do local', recompensa: 'troca de lugar com outro caçador', pista: '' },
+                    { distrito: 4, missao: 'D', requisito: 'Elimine todos os VAZIO do local', recompensa: 'troca de lugar com outro INVESTIGADOR', pista: '' },
 
-                    { distrito: 5, missao: 'A', requisito: 'Descarte 1 carta de arma', recompensa: 'elimine 1 STRIGOI de um distrito qualquer', pista: '' },
-                    { distrito: 5, missao: 'B', requisito: 'Elimine todos os strigoi do local', recompensa: '1 carta de arma', pista: '' },
-                    { distrito: 5, missao: 'C', requisito: 'descarte 1 carta de reforços, +2h de todos os caçadores', recompensa: 'avanço de nível', pista: 'coloque 1 strigoi e 1 marcador nos distritos, Periferia [8], Esconderijo [1], Condomínios [7]',proximo:[1,8,7] },
-                    { distrito: 5, missao: 'D', requisito: '+4h', recompensa: 'move 2 caçadores de qualquer distrito', pista: 'Retire os outros marcadores, coloque 1 strigoi e 1 marcador nos distritos, Igreja [12], Cemitério [9]',proximo:[12,9], limpar:true },
+                    { distrito: 5, missao: 'A', requisito: 'Descarte 1 carta de arma', recompensa: 'elimine 1 VAZIO de um distrito qualquer', pista: '' },
+                    { distrito: 5, missao: 'B', requisito: 'Elimine todos os VAZIO do local', recompensa: '1 carta de arma', pista: '' },
+                    { distrito: 5, missao: 'C', requisito: 'descarte 1 carta de reforços, +2h de todos os INVESTIGADORES', recompensa: 'avanço de nível', pista: 'coloque 1 VAZIO e 1 marcador nos distritos, Periferia [8], Esconderijo [1], Condomínios [7]',proximo:[1,8,7] },
+                    { distrito: 5, missao: 'D', requisito: '+4h', recompensa: 'move 2 INVESTIGADORES de qualquer distrito', pista: 'Retire os outros marcadores, coloque 1 VAZIO e 1 marcador nos distritos, Igreja [12], Cemitério [9]',proximo:[12,9], limpar:true },
 
-                    { distrito: 6, missao: 'A', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 1 carta de item', pista: '' },
-                    { distrito: 6, missao: 'B', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 2 itens, escolha 1 e coloque o outro no fundo do baralho', pista: '' },
-                    { distrito: 6, missao: 'C', requisito: '+1h', recompensa: 'move 2 strigoi de qualquer distrito', pista: '' },
+                    { distrito: 6, missao: 'A', requisito: 'Elimine todos os VAZIO do local', recompensa: 'compre 1 carta de item', pista: '' },
+                    { distrito: 6, missao: 'B', requisito: 'Elimine todos os VAZIO do local', recompensa: 'compre 2 itens, escolha 1 e coloque o outro no fundo do baralho', pista: '' },
+                    { distrito: 6, missao: 'C', requisito: '+1h', recompensa: 'move 2 VAZIO de qualquer distrito', pista: '' },
                     { distrito: 6, missao: 'D', requisito: 'descarte 1 carta de item', recompensa: 'ganha 1 marcador de descanso', pista: '' },
 
-                    { distrito: 7, missao: 'A', requisito: '+2h', recompensa: 'compre 1 carta de reforço', pista: 'coloque 1 strigoi e 1 marcador nos distritos, Aeroporto [11], Metrô [4]',proximo:[11,4] },
-                    { distrito: 7, missao: 'B', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 1 carta de arma', pista: 'coloque 1 strigoi e 1 marcador nos distritos, Parque central [6]',proximo:[6] },
-                    { distrito: 7, missao: 'C', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 1 carta de reforço', pista: '' },
-                    { distrito: 7, missao: 'D', requisito: 'descarte 1 carta de reforços', recompensa: 'move 2 STRIGOI de distrito qualquer', pista: '' },
+                    { distrito: 7, missao: 'A', requisito: '+2h', recompensa: 'compre 1 carta de reforço', pista: 'coloque 1 VAZIO e 1 marcador nos distritos, Aeroporto [11], Metrô [4]',proximo:[11,4] },
+                    { distrito: 7, missao: 'B', requisito: 'Elimine todos os VAZIO do local', recompensa: 'compre 1 carta de arma', pista: 'coloque 1 VAZIO e 1 marcador nos distritos, Parque central [6]',proximo:[6] },
+                    { distrito: 7, missao: 'C', requisito: 'Elimine todos os VAZIO do local', recompensa: 'compre 1 carta de reforço', pista: '' },
+                    { distrito: 7, missao: 'D', requisito: 'descarte 1 carta de reforços', recompensa: 'move 2 VAZIO de distrito qualquer', pista: '' },
 
-                    { distrito: 8, missao: 'A', requisito: 'descarte 1 carta de arma, +2h de todos os caçadores', recompensa: 'compre 1 carta de reforço', pista: 'Retire os outros marcadores, coloque 1 strigoi e 1 strigoi nos distritos, Comércio [10], Condominios [7]',proximo:[10,7], limpar:true },
-                    { distrito: 8, missao: 'B', requisito: '+2h', recompensa: 'elimine 2 STRIGOI de um distrito qualquer', pista: '' },
-                    { distrito: 8, missao: 'C', requisito: '+3h', recompensa: 'recupera 2 de risco de contágio', pista: 'Retire os outros marcadores, coloque 1 strigoi e 1 marcador nos distritos,  Aeroporto [11], Comércio [10],  Docas [2]',proximo:[11,10,2], limpar:true },
-                    { distrito: 8, missao: 'D', requisito: 'Elimine todos os strigoi do local', recompensa: 'elimine 2 STRIGOI de um distrito qualquer', pista: '' },
+                    { distrito: 8, missao: 'A', requisito: 'descarte 1 carta de arma, +2h de todos os INVESTIGADORES', recompensa: 'compre 1 carta de reforço', pista: 'Retire os outros marcadores, coloque 1 VAZIO e 1 VAZIO nos distritos, Comércio [10], Condominios [7]',proximo:[10,7], limpar:true },
+                    { distrito: 8, missao: 'B', requisito: '+2h', recompensa: 'elimine 2 VAZIO de um distrito qualquer', pista: '' },
+                    { distrito: 8, missao: 'C', requisito: '+3h', recompensa: 'recupera 2 de risco de contágio', pista: 'Retire os outros marcadores, coloque 1 VAZIO e 1 marcador nos distritos,  Aeroporto [11], Comércio [10],  Docas [2]',proximo:[11,10,2], limpar:true },
+                    { distrito: 8, missao: 'D', requisito: 'Elimine todos os VAZIO do local', recompensa: 'elimine 2 VAZIO de um distrito qualquer', pista: '' },
 
                     { distrito: 9, missao: 'A', requisito: '+2h', recompensa: 'compre 1 carta de arma', pista: '' },
                     { distrito: 9, missao: 'B', requisito: 'descarte 1 carta de reforço', recompensa: 'compre 1 carta de arma', pista: '' },
                     { distrito: 9, missao: 'C', requisito: '+1h', recompensa: 'ganha 1 marcador de descanso', pista: '' },
-                    { distrito: 9, missao: 'D', requisito: 'Elimine todos os strigoi do local', recompensa: 'compre 1 carta de reforços', pista: '' },
+                    { distrito: 9, missao: 'D', requisito: 'Elimine todos os VAZIO do local', recompensa: 'compre 1 carta de reforços', pista: '' },
 
-                    { distrito: 10, missao: 'A', requisito: 'descarte 1 carta de item, +2h de todos os caçadores', recompensa: 'avanço de nível', pista: ' Retire os outros marcadores, coloque marcadores no Esconderijo [1], cemitério [9]',proximo:[1,9], limpar:true },
-                    { distrito: 10, missao: 'B', requisito: 'descarte 1 carta de reforços, +1h', recompensa: 'avanço de nível', pista: 'coloque 1 strigoi e 1 marcador nos distritos, Docas[2], Metro [3], Aeroporto [11], Centro empresarial [5]',proximo:[2,3,11,5] },
-                    { distrito: 10, missao: 'C', requisito: 'Elimine todos os strigoi do local', recompensa: 'pegue 1 carta de arma do descarte', pista: '' },
-                    { distrito: 10, missao: 'D', requisito: 'descarte 1 carta de reforços, +3h', recompensa: 'avanço de nível', pista: 'Retire os outros marcadores, coloque 1 strigoi e 1 marcador nos distritos, Centro empresarial [5], Condominios [7], Metro [3], Periferia [8]',proximo:[5,3,8,7], limpar:true },
+                    { distrito: 10, missao: 'A', requisito: 'descarte 1 carta de item, +2h de todos os INVESTIGADORES', recompensa: 'avanço de nível', pista: ' Retire os outros marcadores, coloque marcadores no Esconderijo [1], cemitério [9]',proximo:[1,9], limpar:true },
+                    { distrito: 10, missao: 'B', requisito: 'descarte 1 carta de reforços, +1h', recompensa: 'avanço de nível', pista: 'coloque 1 VAZIO e 1 marcador nos distritos, Docas[2], Metro [3], Aeroporto [11], Centro empresarial [5]',proximo:[2,3,11,5] },
+                    { distrito: 10, missao: 'C', requisito: 'Elimine todos os VAZIO do local', recompensa: 'pegue 1 carta de arma do descarte', pista: '' },
+                    { distrito: 10, missao: 'D', requisito: 'descarte 1 carta de reforços, +3h', recompensa: 'avanço de nível', pista: 'Retire os outros marcadores, coloque 1 VAZIO e 1 marcador nos distritos, Centro empresarial [5], Condominios [7], Metro [3], Periferia [8]',proximo:[5,3,8,7], limpar:true },
 
-                    { distrito: 11, missao: 'A', requisito: 'Elimine todos os strigoi do local', recompensa: 'um caçador recebe 1 marcador de descanso', pista: '' },
-                    { distrito: 11, missao: 'B', requisito: 'Elimine todos os strigoi do local', recompensa: 'recupera 1 de risco de contágio', pista: '' },
-                    { distrito: 11, missao: 'C', requisito: '+3h de todos os caçadores', recompensa: 'avanço de nível', pista: ' Retire os outros marcadores, destrua o MESTRE, o mestre aparece (puxe uma carta de infestação para decidir onde)',proximo:[13] , limpar:true },
-                    { distrito: 11, missao: 'D', requisito: 'Elimine todos os strigoi do local', recompensa: 'elimine 2 STRIGOI de um distrito qualquer', pista: '' },
+                    { distrito: 11, missao: 'A', requisito: 'Elimine todos os VAZIO do local', recompensa: 'um INVESTIGADOR recebe 1 marcador de descanso', pista: '' },
+                    { distrito: 11, missao: 'B', requisito: 'Elimine todos os VAZIO do local', recompensa: 'recupera 1 de risco de contágio', pista: '' },
+                    { distrito: 11, missao: 'C', requisito: '+3h de todos os INVESTIGADORES', recompensa: 'avanço de nível', pista: ' Retire os outros marcadores, destrua o INOMINÁVEL, o INOMINÁVEL aparece (puxe uma carta de infestação para decidir onde)',proximo:[13] , limpar:true },
+                    { distrito: 11, missao: 'D', requisito: 'Elimine todos os VAZIO do local', recompensa: 'elimine 2 VAZIO de um distrito qualquer', pista: '' },
 
-                    { distrito: 12, missao: 'A', requisito: '+2h', recompensa: 'avanço de nível', pista: 'coloque 1 strigoi e 1 marcador nos distritos, Periferia [8], Parque central [6], Docas [2]',proximo:[8,6,2] },
+                    { distrito: 12, missao: 'A', requisito: '+2h', recompensa: 'avanço de nível', pista: 'coloque 1 VAZIO e 1 marcador nos distritos, Periferia [8], Parque central [6], Docas [2]',proximo:[8,6,2] },
                     { distrito: 12, missao: 'B', requisito: '+2h', recompensa: 'ganha 1 marcador de descanso', pista: '' },
-                    { distrito: 12, missao: 'C', requisito: 'Elimine todos os strigoi do local', recompensa: 'compra 1 carta de arma', pista: '' },
-                    { distrito: 12, missao: 'D', requisito: 'descarte 1 carta de reforços, +2h', recompensa: 'avanço de nível', pista: 'Retire os outros marcadores, destrua o MESTRE, o mestre aparece (puxe uma carta de infestação para decidir onde)',proximo:[13] , limpar:true },
+                    { distrito: 12, missao: 'C', requisito: 'Elimine todos os VAZIO do local', recompensa: 'compra 1 carta de arma', pista: '' },
+                    { distrito: 12, missao: 'D', requisito: 'descarte 1 carta de reforços, +2h', recompensa: 'avanço de nível', pista: 'Retire os outros marcadores, destrua o INOMINÁVEL, o INOMINÁVEL aparece (puxe uma carta de infestação para decidir onde)',proximo:[13] , limpar:true },
                     
-                    { distrito: 13, missao: 'A', requisito: 'Destrua o MESTRE', recompensa: 'Venceu o jogo', pista: `“Nossa arma transformou os Strigoi em poeira, mas com o mestre não poderia ser diferente, mesmo desfazendo seus membros e o reduzindo a uma lesma sem vida que escorreu pelo bueiro. Nós vencemos!” Por enquanto….` },
-                    { distrito: 13, missao: 'B', requisito: 'Destrua o MESTRE', recompensa: 'Venceu o jogo', pista: `Ao enfrentar o mestre de manhã o espelho se mostrou muito eficaz, porém não foi possível confirmar sua morte, entretanto ainda temos que destruir os Strigoi remanescentes pela cidade, vamos ficar com essa vitória e nos preparar para a próxima batalha.` },
-                    { distrito: 13, missao: 'C', requisito: 'Destrua o MESTRE', recompensa: 'Venceu o jogo', pista: `Com os conhecimentos do livro descobrimos como derrotá-lo, parece não haver forma de matá-lo. O aprisionamos em um caixão de prata e chumbo, agora o deixaremos afundar no oceano. Quanto aos strigoi, creio que não serão problema sem o Mestre.` },
-                    { distrito: 13, missao: 'D', requisito: 'Destrua o MESTRE', recompensa: 'Venceu o jogo', pista: `Precisávamos do elemento surpresa, mas como parece que o mestre sabe de tudo, fomos de frente. Alguns não resistiram, mas conseguimos chegar perto o bastante para que a lamina atravessasse seu peito, e uma horda de strigoi, o levasse embora. Ninguém poderia sobreviver aquilo, espero que ele também não...` },
+                    { distrito: 13, missao: 'A', requisito: 'Destrua o INOMINÁVEL', recompensa: 'Venceu o jogo', pista: `“Nossa arma transformou os VAZIO em poeira, mas com o INOMINÁVEL não poderia ser diferente, mesmo desfazendo seus membros e o reduzindo a uma lesma sem vida que escorreu pelo bueiro. Nós vencemos!” Por enquanto….` },
+                    { distrito: 13, missao: 'B', requisito: 'Destrua o INOMINÁVEL', recompensa: 'Venceu o jogo', pista: `Ao enfrentar o INOMINÁVEL de manhã o espelho se mostrou muito eficaz, porém não foi possível confirmar sua morte, entretanto ainda temos que destruir os VAZIO remanescentes pela cidade, vamos ficar com essa vitória e nos preparar para a próxima batalha.` },
+                    { distrito: 13, missao: 'C', requisito: 'Destrua o INOMINÁVEL', recompensa: 'Venceu o jogo', pista: `Com os conhecimentos do livro descobrimos como derrotá-lo, parece não haver forma de matá-lo. O aprisionamos em um caixão de prata e chumbo, agora o deixaremos afundar no oceano. Quanto aos VAZIO, creio que não serão problema sem o INOMINÁVEL.` },
+                    { distrito: 13, missao: 'D', requisito: 'Destrua o INOMINÁVEL', recompensa: 'Venceu o jogo', pista: `Precisávamos do elemento surpresa, mas como parece que o INOMINÁVEL sabe de tudo, fomos de frente. Alguns não resistiram, mas conseguimos chegar perto o bastante para que a lamina atravessasse seu peito, e uma horda de VAZIO, o levasse embora. Ninguém poderia sobreviver aquilo, espero que ele também não...` },
                                         
                 ]
 
